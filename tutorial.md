@@ -4,6 +4,10 @@ Linux is an operating system that sits the at core of much of the technology we 
 
 We'll start the workshop by reviewing some common and good-to-know linux commands.  We'll then move into Bandit ["War Games"](http://overthewire.org/wargames/bandit/), an interactive shell-based game that reinforces basic commands and teaches security concepts.
 
+## Why Learn Linux?
+
+Linux knowledge is invaluable in the CS field. Odds are servers you'll interact with on the job will be running some distro of Linux. In addition, small or embedded systems often run some flavor of Linux.  Ever used a raspberry pi? Those devices are generally running Raspbian, a Linux distribution.  Linux provides a stable development environment, and of course is free and open for users to get started with!
+
 ## Setup 
 
 Before we start, lets get our enviornments set up.
@@ -41,6 +45,54 @@ You'll need to install a program like [PuTTY](https://bit.ly/2pV44Vj).
 
 After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the hostname. You'll then be able to add in your username and password.
 
+## The Basics
+
+Great - at this point you should be ssh'd into the server and ready to practice some commands!  Linux at its core is just a collection of files organized into different directories. Check what directory you're in by typing `pwd` (Print Working Directory).
+
+```bash
+-bash-4.2$ pwd
+/home/joshua
+```
+
+All commands you run will be executed with this directory (my home directory) as context.  When cloning something like a git repo, those files will be cloned into whatever your working directory is, unless you specify otherwise.
+
+Lets fire off a few other commands while we're here.
+* `ls` - lists all files and directories in the current working directory
+* `cd <PATH>` - (c)hange (d)irectory to the given path. 
+* `mkdir <NAME>` - make a new directory in the current working directory
+* `touch <NAME>` - Creates a new (empty) file in the working directory
+
+```bash
+bash-4.2$ pwd
+/home/joshua
+-bash-4.2$ ls
+challenge02  desktop.ini  joshua.txt   My Videos     Visual Studio 2008
+Contacts     Downloads    Links        $RECYCLE.BIN  Visual Studio 2010
+cs3650       hw05         My Music     Systems       Visual Studio 2012
+Desktop      hw07         My Pictures  tmp
+-bash-4.2$ mkdir CoSMO
+-bash-4.2$ ls
+challenge02  cs3650       Downloads  joshua.txt  My Pictures   Systems             Visual Studio 2010
+Contacts     Desktop      hw05       Links       My Videos     tmp                 Visual Studio 2012
+CoSMO        desktop.ini  hw07       My Music    $RECYCLE.BIN  Visual Studio 2008
+-bash-4.2$ cd Co
+Contacts/ CoSMO/
+-bash-4.2$ cd CoSMO/
+-bash-4.2$ touch file.txt
+-bash-4.2$ ls
+file.txt
+```
+
+ 
+
+## Linux file structure
+
+TODO: use tree
+
+## Switches
+
+TODO
+
 
 ## Tips
 
@@ -52,3 +104,12 @@ One of my favorite bash features is reverse command search.  Often times you'll 
 $ 
 (reverse-i-search)`ssh': ssh joshua@login.ccs.neu.edu
 ```
+
+## Over The Wire
+
+...
+...
+
+# Acknowledgments
+
+Thanks to Anuj Modi for inspiration on some of the supporting content!
