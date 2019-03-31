@@ -118,6 +118,8 @@ Hello, CoSMO
 
 ## Useful Linux Programs
 
+### grep
+
 Let's break down that last command we issued with `grep`.  Grep is a built in unix program that seraches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO". Grep scanned the file line by line and, see you can see, found one line matched and and printed it. 
 
 ### Manual Pages
@@ -196,6 +198,15 @@ Hello, CoSMO
 
 ```
 
+### vim
+
+So far we've learned how to create files, but how do we edit those later on?  There's lot of options of text editor (including `nano`, `emacs`, and more).  Vim is one popular text editor.
+
+Opening files is as simple as `vim <NAME OF FILE>`. If the file doesn't exist in your working directory, it wil be created.
+
+once inside a file, you're placed in command mode.  Pressing `i` will place you into "insert" mode, where you can edit the file how you'd expect.  To exit insert mode and move back into command mode, press `ESC`.  From command mode you can save/(w)rite and close/(q)uit by entering `:wq`.
+
+Vim is very powerful. You can find a (more) complete vim cheatsheet [here](https://vim.rtorr.com/).  
 
 
 ## Tips
