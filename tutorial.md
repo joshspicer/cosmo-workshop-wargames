@@ -66,14 +66,10 @@ Lets fire off a few other commands while we're here.
 bash-4.2$ pwd
 /home/joshua
 -bash-4.2$ ls
-challenge02  desktop.ini  joshua.txt   My Videos     Visual Studio 2008
-Contacts     Downloads    Links        $RECYCLE.BIN  Visual Studio 2010
 cs3650       hw05         My Music     Systems       Visual Studio 2012
 Desktop      hw07         My Pictures  tmp
 -bash-4.2$ mkdir CoSMO
 -bash-4.2$ ls
-challenge02  cs3650       Downloads  joshua.txt  My Pictures   Systems             Visual Studio 2010
-Contacts     Desktop      hw05       Links       My Videos     tmp                 Visual Studio 2012
 CoSMO        desktop.ini  hw07       My Music    $RECYCLE.BIN  Visual Studio 2008
 -bash-4.2$ cd Co
 Contacts/ CoSMO/
