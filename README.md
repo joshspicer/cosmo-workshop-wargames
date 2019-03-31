@@ -331,13 +331,40 @@ UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 
 The spaces in this file name had to be escaped, which is why it was necessary to add the escape character `\`.  Again, over the wire supplies hints on [readings](https://www.google.com/search?q=spaces+in+filename) for each level.
 
+#### Level 3 -> Level 4
+
+This level mentions that the password file is _hidden_ from us. Upon inspection, it looks like that's true!
+
+```bash
+bandit3@bandit:~$ ls
+inhere
+bandit3@bandit:~$ cd inhere/
+bandit3@bandit:~/inhere$ ls
+bandit3@bandit:~/inhere$
+```
+
+I first solved this problem by starting a Google search "hidden files linux". You'll quickly find lots of information about [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory) where you can read up and learn what command should be used.  
+
+> In Unix-like operating systems, any file or folder that starts with a dot character (for example, /home/user/.config), commonly called a dot file or dotfile, is to be treated as hidden – that is, the ls command does not display them unless the -a flag (ls -a) is used. In most command-line shells, wildcards will not match files whose names start with . unless the wildcard itself starts with an explicit . .
+
+Here we learn that `ls` has a `-a` flag, which displays these hidden dot files. We can confirm that by checking `ls`'s man page, or testing it out for ourselves.
+
+```bash
+bandit3@bandit:~/inhere$ ls -a
+.  ..  .hidden
+
+bandit3@bandit:~/inhere$ cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+```
 
 # What's next?
 
-Bandit itself has 34 levels.  Try to get through as many as you can! If you want another challenge Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
+Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! If you want another challenge Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
 
 
 
 # Acknowledgments
 
 Thanks to Anuj Modi for inspiration on some of the supporting content!
+
+Written for the April 1st, 2019 Northeastern CoSMO Meeting.
