@@ -70,7 +70,8 @@ cs3650       hw05         My Music     Systems       Visual Studio 2012
 Desktop      hw07         My Pictures  tmp
 -bash-4.2$ mkdir CoSMO
 -bash-4.2$ ls
-CoSMO        desktop.ini  hw07       My Music    $RECYCLE.BIN  Visual Studio 2008
+CoSMO        cs3650       hw05         My Music     Systems          Visual Studio 2008
+Desktop      hw07         My Pictures  tmp
 -bash-4.2$ cd Co
 Contacts/ CoSMO/
 -bash-4.2$ cd CoSMO/
