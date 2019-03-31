@@ -270,6 +270,9 @@ Note that we had to specify a port with ssh's `-p` flag.
 
 Let's apply what we just learned to find next level's password!
 
+
+#### Level 0 -> Level 1
+
 ```bash
 bandit0@bandit:~$ pwd
 /home/bandit0
@@ -281,6 +284,8 @@ bandit0@bandit:~$
 ```
 
 Hey look, we found something in a file called `readme` that looks like a password. If we use this password on [the next level](http://overthewire.org/wargames/bandit/bandit1.html) we see that it works! Note that we changed the username from `bandit0` to `bandit1`.
+
+#### Level 1 -> Level 2
 
 ```bash
 bandit0@bandit:~$ exit
@@ -295,7 +300,36 @@ Welcome to Overthewire!
 ...
 ```
 
+This challenge is designed to emphasize special characters in the bash language. More specifically, the special character `-`. Check out the "Helpful Reading Material" if you ever get stuck!
 
+```bash
+bandit1@bandit:~$ ls
+-
+
+bandit1@bandit:~$ file ./-
+./-: ASCII text
+
+bandit1@bandit:~$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+```
+
+#### Level 2 -> Level 3
+
+Level two can be accessed by changing the username to `bandit2`, just like before!  Be sure to supply the new password we just discovered.
+
+```bash
+bandit2@bandit:~$ ls
+spaces in this filename
+
+bandit2@bandit:~$ file spaces\ in\ this\ filename
+spaces in this filename: ASCII text
+
+bandit2@bandit:~$ cat spaces\ in\ this\ filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+```
+
+The spaces in this file name had to be escaped, which is why it was necessary to add the escape character `\`.  Again, over the wire supplies hints on [readings](https://www.google.com/search?q=spaces+in+filename) for each level.
 
 
 # What's next?
