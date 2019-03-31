@@ -49,19 +49,30 @@ After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the ho
 
 ### Directory Traversal
 
-Great - at this point you should be ssh'd into the server and ready to practice some commands!  Linux at its core is just a collection of files organized into different directories. Check what directory you're in by typing `pwd` (Print Working Directory).
+Great - at this point you should be ssh'd into the server and ready to practice some commands!  Linux at its core is just a collection of files organized into different directories. Check what directory you're in by typing `pwd` (Print Working Directory). You can (c)hange  your working (d)irectory with the `cd` command.
 
+When changing directory, you can give the absolute path, or provide a relative path with `.` and `..`.  A single dot represents the current directory you are in. Double dots represent the parent directory.
 
 ```bash
 -bash-4.2$ pwd
 /home/joshua
+
+-bash-4.2$ cd ./Desktop
+
+-bash-4.2$ pwd
+/home/joshua/Desktop
+
+-bash-4.2$ cd ..
+
+-bash-4.2$ pwd
+/home/joshua
+
 ```
 
 All commands you run will be executed with this directory (my home directory) as context.  When cloning something like a git repo, those files will be cloned into whatever your working directory is, unless you specify otherwise.
 
 Lets fire off a few other commands while we're here.
 * `ls` - lists all files and directories in the current working directory
-* `cd <PATH>` - (c)hange (d)irectory to the given path. 
 * `mkdir <NAME>` - make a new directory in the current working directory
 * `touch <NAME>` - Creates a new (empty) file in the working directory
 * `cat <FILE>` - Print the contents of the file to standard out.
@@ -208,6 +219,21 @@ once inside a file, you're placed in command mode.  Pressing `i` will place you 
 
 Vim is very powerful. You can find a (more) complete vim cheatsheet [here](https://vim.rtorr.com/).  
 
+### file
+
+`file <FILE>` is a program that tries to classify and determine the filetype of a given file. This is useful when a file extension isn't specified.
+
+### find
+
+Similar to `grep`, the program `find` can be used to locate files based on certain criteria.  
+
+```bash
+-bash-4.2$ find ./CoSMO/ -name "greeting*"
+./CoSMO/greeting.txt
+```
+
+The example looks inside our CoSMO directory for any files that begin with the word "greeting".  What's returned is a list of all the files that match!
+
 
 ## Tips
 
@@ -223,7 +249,7 @@ $
 
 ## Over The Wire
 
-Congrats - you just learned all you need to know to hop into [Bandit](http://overthewire.org/wargames/bandit)!Bandit and the rest of the over the wire "war games" are security labs intended to teach you the security fundamentals.  Bandit especially is a great introduction to practical Linux usage! 
+Congrats - you just learned all you need to know to hop into [Bandit](http://overthewire.org/wargames/bandit)! Bandit and the rest of the Over The Wire "war games" are security labs intended to teach you the security fundamentals.  Bandit especially is a great introduction to practical Linux usage! 
 
 Head over the [Level0](http://overthewire.org/wargames/bandit/bandit0.html) and SSH into the first challenge. (You'll _first_ need to disconnect from the Khoury college server!).  
 
@@ -272,9 +298,9 @@ Welcome to Overthewire!
 
 
 
+# What's next?
 
-
-
+Bandit itself has 34 levels.  Try to get through as many as you can! If you want another challenge Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
 
 
 
