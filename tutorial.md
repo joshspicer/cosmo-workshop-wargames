@@ -65,7 +65,7 @@ Lets fire off a few other commands while we're here.
 * `mkdir <NAME>` - make a new directory in the current working directory
 * `touch <NAME>` - Creates a new (empty) file in the working directory
 * `cat <FILE>` - Print the contents of the file to standard out.
-
+* `echo <TEXT>` - "Echos" a given string to standard out (the screen)
 
 ```bash
 bash-4.2$ pwd
@@ -94,10 +94,10 @@ file.txt
 
 Bash is a special kind of programming language that we  interact with in terminal.  Just like Java or Python have operators like `+` and `*`, we see those operators in Bash too (along with some other helpful ones!).
 
-* **>** Used to redirect standard output to a file. Overwrites existing file is it exists!
-* **>>** Also used to redirect, but appends to a current file.
-* **<** Accept input from a file
-* **|** A "Pipe". Sends the output of the first command as the input of the next command
+* `>` Used to redirect standard output to a file. Overwrites existing file is it exists!
+* `>>` Also used to redirect, but appends to a current file.
+* `<` Accept input from a file
+* `|` A "Pipe". Sends the output of the first command as the input of the next command
 
 
 ```bash
@@ -163,7 +163,7 @@ The file is divided into explanation what the program is used for, the correct s
 
 Linux programs often can do more than one thing, and grep is no exception.  If you look on grep's man page you see a lot of options to modify the behavior of the program.  
 
-```bash
+```
     ...
     ...
    Matching Control
@@ -189,19 +189,12 @@ As you can see, specifying the flag `-i` tells grep to ignore case.
 
 
 ```bash
--bash-4.2$ cat greeting.txt | grep -i "cOSMO"
+-bash-4.2$ cat greeting.txt | grep -i "cosmo"
 Hello, CoSMO
 
--bash-4.2$ cat greeting.txt | grep  "cOSMO"
+-bash-4.2$ cat greeting.txt | grep  "cosmo"
 
 ```
-
-
-
-
-## Linux file structure
-
-TODO: use tree
 
 
 
