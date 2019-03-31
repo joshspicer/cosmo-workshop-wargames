@@ -212,8 +212,60 @@ $
 
 ## Over The Wire
 
+Congrats - you just learned all you need to know to hop into [Bandit](http://overthewire.org/wargames/bandit)!Bandit and the rest of the over the wire "war games" are security labs intended to teach you the security fundamentals.  Bandit especially is a great introduction to practical Linux usage! 
+
+Head over the [Level0](http://overthewire.org/wargames/bandit/bandit0.html) and SSH into the first challenge. (You'll _first_ need to disconnect from the Khoury college server!).  
+
+```bash
+josh$ ssh -p 2220 bandit0@bandit.labs.overthewire.org
+
+The authenticity of host '[bandit.labs.overthewire.org]:2220 ([176.9.9.172]:2220)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496E...hczc.
+
+Are you sure you want to continue connecting (yes/no)? yes
+
+Welcome to OverTheWire!
 ...
 ...
+```
+
+Note that we had to specify a port with ssh's `-p` flag. 
+
+Let's apply what we just learned to find next level's password!
+
+```bash
+bandit0@bandit:~$ pwd
+/home/bandit0
+bandit0@bandit:~$ ls
+readme
+bandit0@bandit:~$ cat readme
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+bandit0@bandit:~$
+```
+
+Hey look, we found something in a file called `readme` that looks like a password. If we use this password on [the next level](http://overthewire.org/wargames/bandit/bandit1.html) we see that it works! Note that we changed the username from `bandit0` to `bandit1`.
+
+```bash
+bandit0@bandit:~$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+tracy:bandit-workshop josh$ ssh -p 2220 bandit1@bandit.labs.overthewire.org
+
+Password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+Welcome to Overthewire!
+...
+...
+```
+
+
+
+
+
+
+
+
+
 
 # Acknowledgments
 
