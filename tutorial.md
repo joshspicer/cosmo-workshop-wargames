@@ -47,7 +47,10 @@ After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the ho
 
 ## The Basics
 
+### Directory Traversal
+
 Great - at this point you should be ssh'd into the server and ready to practice some commands!  Linux at its core is just a collection of files organized into different directories. Check what directory you're in by typing `pwd` (Print Working Directory).
+
 
 ```bash
 -bash-4.2$ pwd
@@ -61,25 +64,61 @@ Lets fire off a few other commands while we're here.
 * `cd <PATH>` - (c)hange (d)irectory to the given path. 
 * `mkdir <NAME>` - make a new directory in the current working directory
 * `touch <NAME>` - Creates a new (empty) file in the working directory
+* `cat <FILE>` - Print the contents of the file to standard out.
+
 
 ```bash
 bash-4.2$ pwd
 /home/joshua
+
 -bash-4.2$ ls
 cs3650       hw05         My Music     Systems       Visual Studio 2012
 Desktop      hw07         My Pictures  tmp
+
 -bash-4.2$ mkdir CoSMO
+
 -bash-4.2$ ls
 CoSMO        cs3650       hw05         My Music     Systems          Visual Studio 2008
 Desktop      hw07         My Pictures  tmp
--bash-4.2$ cd Co
 Contacts/ CoSMO/
+
 -bash-4.2$ cd CoSMO/
+
 -bash-4.2$ touch file.txt
+
 -bash-4.2$ ls
 file.txt
 ```
 
+### Bash Operators
+
+Bash is a special kind of programming language that we  interact with in terminal.  Just like Java or Python have operators like `+` and `*`, we see those operators in Bash too (along with some other helpful ones!).
+
+* **>** Used to redirect standard output to a file. Overwrites existing file is it exists!
+* **>>** Also used to redirect, but appends to a current file.
+* **<** Accept input from a file
+* **|** A "Pipe". Sends the output of the first command as the input of the next command
+
+
+```bash
+-bash-4.2$ echo "Hello, CoSMO" > greeting.txt
+
+-bash-4.2$ cat greeting.txt
+Hello, CoSMO
+
+-bash-4.2$ echo "How are you?" >> greeting.txt
+
+-bash-4.2$ cat greeting.txt
+Hello, CoSMO
+How are you?
+
+-bash-4.2$ cat greeting.txt | grep "CoSMO"
+Hello, CoSMO
+```
+
+### Useful Linux Programs
+
+Let's break down that last command we issued with "grep".  Grep is a built in unix program that seraches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO".  
  
 
 ## Linux file structure
@@ -101,6 +140,11 @@ One of my favorite bash features is reverse command search.  Often times you'll 
 $ 
 (reverse-i-search)`ssh': ssh joshua@login.ccs.neu.edu
 ```
+
+
+### Manual Pages
+
+TODO
 
 ## Over The Wire
 
