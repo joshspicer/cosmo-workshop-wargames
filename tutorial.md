@@ -10,7 +10,7 @@ Linux knowledge is invaluable in the CS field. Odds are servers you'll interact 
 
 ## Setup 
 
-Before we start, lets get our enviornments set up.
+Before we start, lets get our environment set up.
 
 ### Khoury Account
 
@@ -116,18 +116,93 @@ How are you?
 Hello, CoSMO
 ```
 
-### Useful Linux Programs
+## Useful Linux Programs
 
-Let's break down that last command we issued with "grep".  Grep is a built in unix program that seraches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO".  
- 
+Let's break down that last command we issued with `grep`.  Grep is a built in unix program that seraches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO". Grep scanned the file line by line and, see you can see, found one line matched and and printed it. 
+
+### Manual Pages
+
+You might be asking at this point, how am I supposed to remember all these commands? Good news - you don't.  Most linux programs will come with a "manual" file that explains exactly how to use them. Let's see what grep's manual page looks like by running the `man` command. 
+
+Type `man grep`
+
+```
+GREP(1)                                          General Commands Manual                                         GREP(1)
+
+NAME
+       grep, egrep, fgrep - print lines matching a pattern
+
+SYNOPSIS
+       grep [OPTIONS] PATTERN [FILE...]
+       grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]
+
+DESCRIPTION
+       grep  searches the named input FILEs (or standard input if no files are named, or if a single hyphen-minus (-) is
+       given as file name) for lines containing a match to the given PATTERN.  By  default,  grep  prints  the  matching
+       lines.
+
+       In  addition,  two  variant  programs egrep and fgrep are available.  egrep is the same as grep -E.  fgrep is the
+       same as grep -F.  Direct invocation as either egrep or fgrep is deprecated, but is provided to  allow  historical
+       applications that rely on them to run unmodified.
+
+OPTIONS
+   Generic Program Information
+       --help Print  a  usage message briefly summarizing these command-line options and the bug-reporting address, then
+              exit.
+
+       -V, --version
+
+    ...
+    ...
+    ...
+```
+
+The file is divided into explanation what the program is used for, the correct syntax, as well as a variety of options that can be run.
+
+### Options
+
+Linux programs often can do more than one thing, and grep is no exception.  If you look on grep's man page you see a lot of options to modify the behavior of the program.  
+
+```bash
+    ...
+    ...
+   Matching Control
+       -e PATTERN, --regexp=PATTERN
+              Use PATTERN as the pattern.  This can be used to specify multiple search patterns, or to protect a pattern
+              beginning with a hyphen (-).  (-e is specified by POSIX.)
+
+       -f FILE, --file=FILE
+              Obtain patterns from FILE, one per line.  The empty file contains zero  patterns,  and  therefore  matches
+              nothing.  (-f is specified by POSIX.)
+
+       -i, --ignore-case
+              Ignore case distinctions in both the PATTERN and the input files.  (-i is specified by POSIX.)
+
+       -v, --invert-match
+              Invert the sense of matching, to select non-matching lines.  (-v is specified by POSIX.)
+
+    ...
+    ...
+```
+
+As you can see, specifying the flag `-i` tells grep to ignore case.
+
+
+```bash
+-bash-4.2$ cat greeting.txt | grep -i "cOSMO"
+Hello, CoSMO
+
+-bash-4.2$ cat greeting.txt | grep  "cOSMO"
+
+```
+
+
+
 
 ## Linux file structure
 
 TODO: use tree
 
-## Switches
-
-TODO
 
 
 ## Tips
@@ -141,10 +216,6 @@ $
 (reverse-i-search)`ssh': ssh joshua@login.ccs.neu.edu
 ```
 
-
-### Manual Pages
-
-TODO
 
 ## Over The Wire
 
