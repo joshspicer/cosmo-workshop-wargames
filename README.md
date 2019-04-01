@@ -387,7 +387,7 @@ We notice that `-file07` is the only one that contains a different type of data.
 
 #### Level 5 -> Level 6
 
-Let's do one more together!  This challenge gives us some attributes of the file we're looking for. 
+This challenge gives us some attributes of the file we're looking for. 
 
 > human-readable, 1033 bytes in size, and not executable
 
@@ -401,8 +401,23 @@ bandit5@bandit:~$ cat ./inhere/maybehere07/.file2
 DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 ```
 
+#### Level 6 -> Level 7
+
+Let's do one more together! This one is similar, but this time we need to search the entire server for the file, not just a certain directory.  By indicating `/` in our command, we are saying start your search at the root (top) of the filesystem, and search down from there.  I again used 
+
+
+```bash
+bandit6@bandit:/$ find / -user bandit7 -group bandit6 -size 33c 2> /dev/null
+/var/lib/dpkg/info/bandit7.password
+bandit6@bandit:/$ cat /var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+```
+
+Note: As you can see I added a `2> /dev/null` to the end of the command.  While perhaps a bit outside the scope of this lab, that served to redirect all of _standard error_ to someplace else (not our terminal screen). If we didn't do that, would would have gotten `permission denied` errors clouding our screen, since we searched the entire server (we did `/`, instead of `.`) for the file. 
 
 # What's next?
+
+As you can see, the challenges are getting a bit harder!
 
 Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! 
 
