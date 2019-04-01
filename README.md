@@ -1,12 +1,12 @@
 # Linux CLI / Bandit Workshop
 
-Linux is an operating system that sits the at core of much of the technology we interact with daily. Linux is free, secure, and having to work with it on the job is unavoidable.
+Linux is an operating system that sits the at core of much of the technology we interact with daily. Linux is free, secure, and to work with it on the job is unavoidable.
 
 We'll start the workshop by reviewing some common and good-to-know linux commands.  We'll then move into Bandit ["War Games"](http://overthewire.org/wargames/bandit/), an interactive shell-based game that reinforces basic commands and teaches security concepts.
 
 ## Why Learn Linux?
 
-Linux knowledge is invaluable in the CS field. Odds are servers you'll interact with on the job will be running some distro of Linux. In addition, small or embedded systems often run some flavor of Linux.  Ever used a raspberry pi? Those devices are generally running Raspbian, a Linux distribution.  Linux provides a stable development environment, and of course is free and open for users to get started with!
+Linux is an operating system, like MacOS or Windows. Linux knowledge is invaluable in the CS field. Odds are servers you'll interact with on the job will be running some distro of Linux. In addition, small or embedded systems often run some flavor of Linux.  Ever used a raspberry pi? Those devices are generally running Raspbian, a Linux distribution.  Linux provides a stable development environment, and of course is free and open for users to get started with!
 
 ## Setup 
 
@@ -14,22 +14,23 @@ Before we start, lets get our environment set up.
 
 ### Khoury Account
 
-Khoury college provides a Linux server for students to utilize. You connect to this server over SSH, a protocol that forwards all the terminal commands you type to the remote server.  You can adminsister remote servers from your own computer this way.  We're going to SSH into the Khoury College servers to practice some basics.
+Khoury college provides a Linux server for students to utilize. You connect to this server over SSH, a protocol that forwards all the terminal commands you type locally, to the remote server.  You can administer remote servers from your own computer this way.  We're going to SSH into the Khoury College servers to practice some basics.
 
-Let's create your CCIS/Khoury account. This is the same account you use for Bottlenose!  Note: If you aren't a CCIS student you can skip this step and just connect directly to Over The Wire (more on that later!).
+We will be using our CCIS/Khoury accounts (this is the same account you use for Bottlenose!).  Note: If you aren't a CCIS student you can skip this step and just connect directly to Over The Wire (more on that later), or just pay attention to the demonstration!
 
-* You can create your account [here](https://www.khoury.northeastern.edu/systems/getting-started/)
-* If you have an account and forgot your password, you can reset it [here](https://my.ccs.neu.edu/forgot/password)
-* If you have an account but forgot your username check [here](https://my.ccs.neu.edu/forgot/username)
+* You can create your CCIS account [here](https://www.khoury.northeastern.edu/systems/getting-started/)
+* If you have an account but [forgot your password](https://my.ccs.neu.edu/forgot/password) you can reset it here.
+* If you have an account but [forgot your username](https://my.ccs.neu.edu/forgot/username), check here.
 
 
 ### MacOS/Linux
 
-Open up your terminal program. On MacOS this can be done by opening Spotlight (CMD+Spacebar) and typing in "Terminal". 
+MacOS and Linux come with terminal programs out of the box.  On MacOS this can be done by opening Spotlight (CMD+Spacebar) and typing in "Terminal". 
 
 You can now connect to our college SSH server by typing 
-`ssh <username>@login.ccs.neu.edu`
+`ssh <YOUR-USERNAME>@login.ccs.neu.edu`
 
+#### Pro Tip
 To make it easier to connect in the future you can add the following configuration to your ssh config. Open up the file by typing `vim ~/.ssh/config`.  Press "i" to enter vim's insert (typing) mode.
 ```bash
  Host ccis
@@ -37,13 +38,13 @@ To make it easier to connect in the future you can add the following configurati
       User <YOUR USERNAME>
 
 ```
-You can save the file by entering `ESC :wq`.  This will (w)rite the file and (q)uit vim. Now all I have to type is `ssh ccis` and all the information is entered for me.
+You can save the file by entering `ESC :wq`.  This will (w)rite the file and (q)uit vim. Now all I have to type is `ssh ccis` and all the information is autofilled for me.
 
 ### Windows
 
-You'll need to install a program like [PuTTY](https://bit.ly/2pV44Vj). 
+If on Windows, you'll need to install a program like [PuTTY](https://bit.ly/2pV44Vj). You can also use the [Windows Linux Subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
-After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the hostname. You'll then be able to add in your username and password.
+After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the hostname. You'll then be able to add in your username and password, and eventually connect.
 
 ## The Basics
 
@@ -51,7 +52,7 @@ After installing PuTTY, open the program and enter `login.ccs.neu.edu` as the ho
 
 Great - at this point you should be ssh'd into the server and ready to practice some commands!  Linux at its core is just a collection of files organized into different directories. Check what directory you're in by typing `pwd` (Print Working Directory). You can (c)hange  your working (d)irectory with the `cd` command.
 
-When changing directory, you can give the absolute path, or provide a relative path with `.` and `..`.  A single dot represents the current directory you are in. Double dots represent the parent directory.
+When changing directory, you can either specify the **absolute path**, or provide a **relative path** with `.` and `..`.  A single dot represents the current directory you are in. Double dots represent the parent directory.
 
 ```bash
 -bash-4.2$ pwd
@@ -103,12 +104,12 @@ file.txt
 
 ### Bash Operators
 
-Bash is a special kind of programming language that we  interact with in terminal.  Just like Java or Python have operators like `+` and `*`, we see those operators in Bash too (along with some other helpful ones!).
+Bash is a special kind of programming language that we interact with in our terminals.  Just like Java or Python have operators like `+` and `*`, we see operators in Bash too. Below are some useful ones (although there are plenty more)!
 
 * `>` Used to redirect standard output to a file. Overwrites existing file is it exists!
-* `>>` Also used to redirect, but appends to a current file.
-* `<` Accept input from a file
-* `|` A "Pipe". Sends the output of the first command as the input of the next command
+* `>>` Also used to redirect output to a file, but appends to a current file.
+* `<` Redirect input from a file.
+* `|` A "Pipe". Sends the output of the first command as the input of the next command.
 
 
 ```bash
@@ -131,11 +132,11 @@ Hello, CoSMO
 
 ### grep
 
-Let's break down that last command we issued with `grep`.  Grep is a built in unix program that seraches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO". Grep scanned the file line by line and, see you can see, found one line matched and and printed it. 
+Let's break down that last command we issued with `grep`.  Grep is a built in unix program that searches files for a specified pattern of words. In the above command we passed our file `greeting.txt` as the input to grep, and searched for a line with the pattern "CoSMO". Grep scanned the file line by line and, as you can see, found one line that matched. Grep, by defaults, prints the lines it matches.
 
 ### Manual Pages
 
-You might be asking at this point, how am I supposed to remember all these commands? Good news - you don't.  Most linux programs will come with a "manual" file that explains exactly how to use them. Let's see what grep's manual page looks like by running the `man` command. 
+You might be asking at this point, how am I supposed to remember all these commands? Good news - you don't!  Most linux programs will come with a "manual" file that explains exactly how to use them. Let's see what grep's manual page looks like by running the `man` command. 
 
 Type `man grep`
 
@@ -170,7 +171,7 @@ OPTIONS
     ...
 ```
 
-The file is divided into explanation what the program is used for, the correct syntax, as well as a variety of options that can be run.
+The file is divided into general program synopsis, what the program is used for, the correct syntax, as well as a variety of options that can be utlized.  You can use the arrow keys to scroll through a man page, and can press `q` to quit out.
 
 ### Options
 
@@ -195,10 +196,11 @@ Linux programs often can do more than one thing, and grep is no exception.  If y
               Invert the sense of matching, to select non-matching lines.  (-v is specified by POSIX.)
 
     ...
+    {... lots more ...}
     ...
 ```
 
-As you can see, specifying the flag `-i` tells grep to ignore case.
+As you can see above, specifying the flag `-i` tells grep to ignore case.
 
 
 ```bash
@@ -215,7 +217,7 @@ So far we've learned how to create files, but how do we edit those later on?  Th
 
 Opening files is as simple as `vim <NAME OF FILE>`. If the file doesn't exist in your working directory, it wil be created.
 
-once inside a file, you're placed in command mode.  Pressing `i` will place you into "insert" mode, where you can edit the file how you'd expect.  To exit insert mode and move back into command mode, press `ESC`.  From command mode you can save/(w)rite and close/(q)uit by entering `:wq`.
+Once inside a file, you're placed in _command_ mode.  Pressing `i` will place you into _insert_ mode, where you can edit the file how you'd expect.  To exit _insert_ mode and move back into _command_ mode, press `ESC`.  From command mode you can (w)rite and (q)uit by entering `:wq`.
 
 Vim is very powerful. You can find a (more) complete vim cheatsheet [here](https://vim.rtorr.com/).  
 
@@ -232,14 +234,16 @@ Similar to `grep`, the program `find` can be used to locate files based on certa
 ./CoSMO/greeting.txt
 ```
 
-The example looks inside our CoSMO directory for any files that begin with the word "greeting".  What's returned is a list of all the files that match!
+The example looks inside our CoSMO directory for any files that begin with the word "greeting". We used the dot in our file path to indicate we are looking relative to our current working directory.  What's returned is a list of all the files that match!
 
 
 ## Tips
 
 ### Reverse Bash search 
 
-One of my favorite bash features is reverse command search.  Often times you'll need to run the same command twice. You can find any commands in your history by pressing `ctrl + R` on Mac/Linux. You can now type the beginning of the command you're looking for and bash will match against your previous commands.  Press `ctrl + R` again to cycle through other options, and enter to issue the command. 
+One of my favorite bash features is reverse command search.  Often times you'll need to run the same command twice. You can find any command in your history by pressing `control + R` on Mac/Linux. You can now type the beginning of the command you're looking for and bash will match against your previous commands.  Press `control + R` again to cycle through older options, and press enter to issue the command. 
+
+Below I typed `ssh` into the search, and was presented with the full login command we used earlier.
 
 ```bash
 $ 
@@ -249,7 +253,7 @@ $
 
 ## Over The Wire
 
-Congrats - you just learned all you need to know to hop into [Bandit](http://overthewire.org/wargames/bandit)! Bandit and the rest of the Over The Wire "war games" are security labs intended to teach you the security fundamentals.  Bandit especially is a great introduction to practical Linux usage! 
+Congrats - you just learned all you need to know to hop into [Bandit](http://overthewire.org/wargames/bandit)! Bandit and the rest of the Over The Wire "war games" are security labs intended to teach you the security fundamentals.  Bandit especially is a great introduction to practical Linux usage! Through Bandit you'll also learn some quirks about bash, linux, and technology in general.  
 
 Head over the [Level0](http://overthewire.org/wargames/bandit/bandit0.html) and SSH into the first challenge. (You'll _first_ need to disconnect from the Khoury college server!).  
 
@@ -266,7 +270,7 @@ Welcome to OverTheWire!
 ...
 ```
 
-Note that we had to specify a port with ssh's `-p` flag. 
+Note that we had to specify a port with ssh's `-p` flag. By default ssh tries to connect over port 22.
 
 Let's apply what we just learned to find next level's password!
 
@@ -283,7 +287,7 @@ boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 bandit0@bandit:~$
 ```
 
-Hey look, we found something in a file called `readme` that looks like a password. If we use this password on [the next level](http://overthewire.org/wargames/bandit/bandit1.html) we see that it works! Note that we changed the username from `bandit0` to `bandit1`.
+Hey look, we found something in a file called `readme` that looks like a password. If we use this password on [the next level](http://overthewire.org/wargames/bandit/bandit1.html) we see that it works! Note that we changed the username below from `bandit0` to `bandit1`.
 
 #### Level 1 -> Level 2
 
@@ -316,7 +320,7 @@ CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 
 #### Level 2 -> Level 3
 
-Level two can be accessed by changing the username to `bandit2`, just like before!  Be sure to supply the new password we just discovered.
+Level two can be accessed by changing the username to `bandit2`, just like before!  Be sure to supply the new password we just discovered above.
 
 ```bash
 bandit2@bandit:~$ ls
@@ -329,7 +333,7 @@ bandit2@bandit:~$ cat spaces\ in\ this\ filename
 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 ```
 
-The spaces in this file name had to be escaped, which is why it was necessary to add the escape character `\`.  Again, over the wire supplies hints on [readings](https://www.google.com/search?q=spaces+in+filename) for each level.
+The spaces in this file name had to be escaped, which is why it was necessary to add the escape character `\`.  Again, over the wire supplies hints on [readings](https://www.google.com/search?q=spaces+in+filename) for each level - take advantage of them!
 
 #### Level 3 -> Level 4
 
@@ -343,11 +347,11 @@ bandit3@bandit:~/inhere$ ls
 bandit3@bandit:~/inhere$
 ```
 
-I first solved this problem by starting a Google search "hidden files linux". You'll quickly find lots of information about [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory) where you can read up and learn what command should be used.  
+I first solved this problem by starting with the Google search "hidden files linux". You'll quickly find lots of information about [dot files](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory) where you can read up and learn what command should be used.  
 
 > In Unix-like operating systems, any file or folder that starts with a dot character (for example, /home/user/.config), commonly called a dot file or dotfile, is to be treated as hidden – that is, the ls command does not display them unless the -a flag (ls -a) is used. In most command-line shells, wildcards will not match files whose names start with . unless the wildcard itself starts with an explicit . .
 
-Here we learn that `ls` has a `-a` flag, which displays these hidden dot files. We can confirm that by checking `ls`'s man page, or testing it out for ourselves.
+Here we learn that `ls` has a `-a` flag, which displays these hidden dot files. We can confirm that by checking `ls`'s man page, or by testing it out for ourselves.
 
 ```bash
 bandit3@bandit:~/inhere$ ls -a
@@ -359,8 +363,9 @@ pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 
 # What's next?
 
-Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! If you want another challenge Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
+Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! 
 
+If you want another challenge, Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
 
 
 # Acknowledgments
