@@ -171,7 +171,9 @@ OPTIONS
     ...
 ```
 
-The file is divided into general program synopsis, what the program is used for, the correct syntax, as well as a variety of options that can be utlized.  You can use the arrow keys to scroll through a man page, and can press `q` to quit out.
+The file is divided into general program synopsis, what the program is used for, the correct syntax, as well as a variety of options that can be utlized.  
+
+The man page can be searched by first pressing `/`, and then typing the pattern you want to search for.  Press the `n` key to swap to the next match in the search!  You can use the arrow keys to scroll through a man page, and can press `q` to quit out.
 
 ### Options
 
