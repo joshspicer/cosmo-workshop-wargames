@@ -361,6 +361,29 @@ bandit3@bandit:~/inhere$ cat .hidden
 pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 ```
 
+#### Level 4 -> Level 5
+
+[This level](http://overthewire.org/wargames/bandit/bandit5.html) mentions that there is only one "human readable" file.  At the start we may not know what that means, but we can again use the `file` command to check the types of data in each file.  You can use the `*` shorthand to mean "all files in the directory".  
+
+```
+bandit4@bandit:~/inhere$ file ./*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4@bandit:~/inhere$ cat ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+```
+
+We notice that `-file07` is the only one that contains a different type of data. Taking a look yields us the password!
+
+
 # What's next?
 
 Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! 
