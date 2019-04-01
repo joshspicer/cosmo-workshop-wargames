@@ -417,9 +417,11 @@ Note: As you can see I added a `2> /dev/null` to the end of the command.  While 
 
 # What's next?
 
-As you can see, the challenges are getting a bit harder!
+As you can see, the challenges are getting a bit harder! 
 
-Bandit itself has 34 levels.  With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! 
+Bandit itself has 34 levels.  As you progress the challenges will start to cover basic concepts over cryptography, networking, and system security.
+
+With all our remaining time, feel free to work through the problems and ask mentors for advice if you need it!  After tonight, try to get through as many as you can! 
 
 If you want another challenge, Over The Wire offers a wide variety of security labs. One of my favorites is [natas](http://overthewire.org/wargames/natas/), which teaches the basics of serverside web security.
 
