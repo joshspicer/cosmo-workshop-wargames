@@ -383,6 +383,22 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 We notice that `-file07` is the only one that contains a different type of data. Taking a look yields us the password!
 
+#### Level 5 -> Level 6
+
+Let's do one more together!  This challenge gives us some attributes of the file we're looking for. 
+
+> human-readable, 1033 bytes in size, and not executable
+
+I approached this by taking a look at the man page for `find`. I searched for "size", which told me that `-size 1033c` means "find files of exactly 1033 bytes".  I approached the other attributes similarly to construct the below "find" command.
+
+
+```bash
+bandit5@bandit:~$ find . -type f ! -executable -readable -size 1033c
+./inhere/maybehere07/.file2
+bandit5@bandit:~$ cat ./inhere/maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+```
+
 
 # What's next?
 
